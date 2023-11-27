@@ -1,0 +1,25 @@
+<div>
+  <h2>Список авторов</h2>
+  <ul>
+    <li *ngFor="let author of authors">
+      <span>{{ author.lastName }}</span>, <span>{{ author.name }}</span>, <span>{{ author.middleName }}</span>,
+      <span>{{ author.dateOfBirth | date }}</span>
+    </li>
+  </ul>
+
+  <h2>Добавить нового автора</h2>
+  <form (submit)="addAuthor()">
+    <label for="lastName">ФИО:</label>
+    <input type="text" id="lastName" [(ngModel)]="newAuthor.lastName" >
+
+    <label for="name">ФИО:</label>
+    <input type="text" id="name" [(ngModel)]="newAuthor.name" >
+    <label for="middleName">ФИО:</label>
+    <input type="text" id="middleName" [(ngModel)]="newAuthor.middleName" >
+
+    <label for="birthdate">Дата рождения:</label>
+    <input type="date" id="birthdate" [(ngModel)]="newAuthor.birthdate" >
+
+    <button type="submit">Добавить</button>
+  </form>
+</div>

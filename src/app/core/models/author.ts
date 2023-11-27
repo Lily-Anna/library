@@ -3,5 +3,5 @@ export interface Author{
     lastName:string;
     name:string;
     middleName:string;
-    dateOfBirth:Date;
+    birthdate:Date;
 }
