@@ -1,5 +1,15 @@
 <table>
-<tr>
-  <th *ngFor="let item of columnName">{{item}}</th>
-</tr>
+  <thead>
+    <tr>
+      <th *ngFor="let item of columnName">{{item}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.id }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.idAuthor }}</td>
+      <td>{{ book.year }}</td>
+    </tr>
+  </tbody>
 </table>

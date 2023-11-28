@@ -11,13 +11,14 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { ListbookComponent } from './components/books/listbook/listbook.component';
-
+import { AuthorsComponent } from './components/authors/authors.component';
 import { AuthorService } from './core/services/author.service';
 @NgModule({
   declarations: [
     AppComponent,
     TopbarComponent,
-    ListbookComponent
+    ListbookComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Author } from 'src/app/core/models/author';
 import { AuthorService } from 'src/app/core/services/author.service';
-
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -9,7 +8,7 @@ import { AuthorService } from 'src/app/core/services/author.service';
 })
 export class AuthorsComponent {
   authors: Author[] = [];
-  newAuthor: Author = { id:0,lastName: '', name: '', middleName: '', birthdate: new Date('0000-00-00')  };
+  newAuthor: Author = { id:0, lastName: '', name: '', middleName: '', birthdate: new Date('0000-00-00')  };
 
   constructor(private authorsService: AuthorService) {
     this.authors = authorsService.getAuthors();

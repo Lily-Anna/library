@@ -6,33 +6,25 @@ import { Author } from '../models/author';
 })
 export class AuthorService {
 
-  private authors: Author[] = [];
+  private localStorageKey = 'authors';
 
-  constructor() {
-    // Инициализация списка авторов
-    this.authors = [
-      { id: 1, lastName: 'Пушкин', name: 'Александр', middleName: 'Сергеевич', birthdate: new Date('1799-06-06') },
-      { id: 2, lastName: 'Лермонтов', name: 'Михаил', middleName: 'Юрьевич', birthdate: new Date('1814-10-15') },
-      { id: 3, lastName: 'Толстой', name: 'Лев', middleName: 'Николаевич', birthdate: new Date('1828-09-09') },
-      { id: 4, lastName: 'Достоевский', name: 'Федор', middleName: 'Михайлович', birthdate: new Date('1821-11-11') }
-    ];
+  private getAuthorsFromLocalStorage(): Author[] {
+    const storedAuthors = localStorage.getItem(this.localStorageKey);
+    return storedAuthors ? JSON.parse(storedAuthors) : [];
+  }
+
+  private saveAuthorsToLocalStorage(authors: Author[]): void {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(authors));
   }
 
   getAuthors(): Author[] {
-    return this.authors;
+    return this.getAuthorsFromLocalStorage();
   }
 
   addAuthor(author: Author): void {
-    // Генерация уникального id для нового автора
-    const newId = this.generateUniqueId();
-    author.id = newId;
-
-    // Добавление нового автора в список
-    this.authors.push(author);
-  }
-
-  private generateUniqueId(): number {
-    // Генерация уникального id на основе текущего времени
-    return Math.floor(Date.now() * Math.random());
+    const authors = this.getAuthorsFromLocalStorage();
+    author.id = authors.length + 1;
+    authors.push(author);
+    this.saveAuthorsToLocalStorage(authors);
   }
 }
